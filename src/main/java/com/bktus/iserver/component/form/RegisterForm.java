@@ -9,6 +9,10 @@ import javax.validation.constraints.NotEmpty;
 public class RegisterForm {
 
     @NotEmpty
+    @Length(min = 4, max = 16)
+    private String nickName;
+
+    @NotEmpty
     @Length(min = 6, max = 24)
     private String username;
 

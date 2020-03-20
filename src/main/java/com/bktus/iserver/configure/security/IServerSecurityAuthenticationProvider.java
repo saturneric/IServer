@@ -35,7 +35,7 @@ public class IServerSecurityAuthenticationProvider implements AuthenticationProv
             throw new BadCredentialsException("Password IS Uncorrected");
         }
 
-        return new UsernamePasswordAuthenticationToken(username, password, details.getAuthorities());
+        return new UsernamePasswordAuthenticationToken(details, password, details.getAuthorities());
     }
 
     @Override

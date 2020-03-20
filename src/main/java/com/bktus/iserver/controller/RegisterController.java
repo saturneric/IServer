@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
+import java.util.Date;
 
 @Controller
 @RequestMapping(value = "/register")
@@ -35,7 +36,8 @@ public class RegisterController {
         }
 
         User user = userService.createUser(registerForm.getUsername(), registerForm.getPassword());
-
+        user.getUserInfo().setRegisterDate(new Date());
+        user.getUserInfo().setNickName(registerForm.getNickName());
         userService.save(user);
 
         return "login";

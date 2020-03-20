@@ -14,7 +14,7 @@
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <th:block th:include="layout::sidebar"></th:block>
+  <th:block th:include="layout::sidebar(${username}, ${nickname})"></th:block>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">

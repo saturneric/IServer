@@ -159,7 +159,7 @@
     </nav>
 </th:block>
 
-<th:block th:fragment="sidebar">
+<th:block th:fragment="sidebar(username, nickname)">
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
         <th:block th:include="component::sidebar-head"></th:block>
@@ -167,7 +167,7 @@
         <!-- Sidebar -->
         <div class="sidebar">
             <!-- Sidebar user panel (optional) -->
-            <th:block th:include="component::sidebar-user-pannel" ></th:block>
+            <th:block th:include="component::sidebar-user-pannel(${username}, ${nickname})" ></th:block>
             <!-- Sidebar Menu -->
             <th:block th:include="component::sidebar-menu"></th:block>
             <!-- /.sidebar-menu -->

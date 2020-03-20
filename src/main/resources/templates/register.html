@@ -17,6 +17,14 @@
 
       <form th:action="@{/register}" th:object="${registerForm}" method="post">
         <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="昵称" th:field="*{nickName}">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-user"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
           <input type="text" class="form-control" placeholder="用户名" th:field="*{username}">
           <div class="input-group-append">
             <div class="input-group-text">

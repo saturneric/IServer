@@ -1,8 +1,6 @@
 package com.bktus.iserver.configure;
 
-import com.bktus.iserver.configure.security.IServerPasswordEncoder;
-import com.bktus.iserver.configure.security.IServerSecurityAuthenticationProvider;
-import com.bktus.iserver.configure.security.IServerUsernamePasswordAuthenticationFilter;
+import com.bktus.iserver.configure.security.*;
 import com.bktus.iserver.service.IServerUserDetailService;
 import com.bktus.iserver.service.IUserService;
 import org.springframework.context.annotation.Bean;
@@ -27,6 +25,12 @@ public class CustomWebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Resource
     private IServerPasswordEncoder passwordEncoder;
+
+    @Resource
+    private IServerAuthenticationSuccessHandler successHandler;
+
+    @Resource
+    private IServerAuthenticationFailureHandler failureHandler;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -59,7 +63,6 @@ public class CustomWebSecurityConfig extends WebSecurityConfigurerAdapter {
         web
                 .ignoring()
                 .antMatchers(
-                        "/",
                         "/build/**",
                         "/dist/**",
                         "/plugins/**",
@@ -72,6 +75,8 @@ public class CustomWebSecurityConfig extends WebSecurityConfigurerAdapter {
     IServerUsernamePasswordAuthenticationFilter authenticationFilter() throws Exception {
         IServerUsernamePasswordAuthenticationFilter filter = new IServerUsernamePasswordAuthenticationFilter();
         filter.setAllowSessionCreation(true);
+        filter.setAuthenticationSuccessHandler(successHandler);
+        filter.setAuthenticationFailureHandler(failureHandler);
         filter.setRequiresAuthenticationRequestMatcher(
                 new AntPathRequestMatcher("/login", "POST"));
 

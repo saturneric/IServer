@@ -27,6 +27,9 @@ public class User implements UserDetails {
 
     private boolean enabled = true;
 
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private UserInfo userInfo = new UserInfo();
+
     @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     private Set<Role> roles = new HashSet<>();
 
