@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-cn"
+      xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <th:block th:include="layout::header"></th:block>
+  <title>登录</title>
+</head>
+<body class="hold-transition login-page">
+<div class="login-box">
+  <div class="login-logo">
+    <a th:href="@{/login}"><b>IServer</b> 登录</a>
+  </div>
+  <!-- /.login-logo -->
+  <div class="card">
+    <div class="card-body login-card-body">
+      <p class="login-box-msg">请登录来解锁你的个人空间</p>
+
+      <form th:action="@{/login}" method="post">
+        <div class="input-group mb-3">
+          <input id="username" name="username" type="text" class="form-control" placeholder="用户名">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-user"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input id="password" name="password" type="password" class="form-control" placeholder="密码">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-8">
+            <div class="icheck-primary">
+              <input type="checkbox" id="remember">
+              <label for="remember">
+                请记住我
+              </label>
+            </div>
+          </div>
+          <!-- /.col -->
+          <div class="col-4">
+            <button type="submit" class="btn btn-primary btn-block">登录</button>
+          </div>
+          <!-- /.col -->
+        </div>
+      </form>
+
+      <p class="mb-1">
+        <a href="forgot-password.html">找回密码</a>
+      </p>
+      <p class="mb-0">
+        <a th:href="@{/register}" class="text-center">注册账号</a>
+      </p>
+    </div>
+    <!-- /.login-card-body -->
+  </div>
+</div>
+<!-- /.login-box -->
+
+<!-- jQuery -->
+<script src="../../plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../../dist/js/adminlte.min.js"></script>
+
+</body>
+</html>
